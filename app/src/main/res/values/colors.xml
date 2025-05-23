@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+
+
+    <color name="cLogoInApp">#1F1568</color>
+    <color name="cBackgroundMain">#F0F1FF</color>
+    <color name="cBackgroundBlack">#212A37</color>
+    <color name="cBackgroundWhite">#FFFFFF</color>
+    <color name="cPrimary">#616EFF</color>
+    <color name="cSecondary">#F1F3FF</color>
+    <color name="cTextPrimary">#212A37</color>
+    <color name="cTextSecondary">#FFFFFF</color>
+</resources>

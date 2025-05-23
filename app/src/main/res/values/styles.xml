@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TitleLargeBold">
+        <item name="android:textSize">@dimen/_20sdp</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+    <style name="TitleLargeMedium">
+        <item name="android:textSize">@dimen/_20sdp</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+    <style name="TitleLargeRegular">
+        <item name="android:textSize">@dimen/_20sdp</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="TitleMediumBold">
+        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+    <style name="TitleMediumMedium">
+        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+    <style name="TitleMediumRegular">
+        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="TitleSmallBold">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+    <style name="TitleSmallMedium">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+    <style name="TitleSmallRegular">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="BodyLargeBold">
+        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+    <style name="BodyLargeMedium">
+        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+    <style name="BodyLargeRegular">
+        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="BodyMediumBold">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+    <style name="BodyMediumMedium">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+    <style name="BodyMediumRegular">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="SmallBodyBold">
+        <item name="android:textSize">@dimen/_10sdp</item>
+        <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+    <style name="SmallBodyMedium">
+        <item name="android:textSize">@dimen/_10sdp</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+    <style name="SmallBodyRegular">
+        <item name="android:textSize">@dimen/_10sdp</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+    </style>
+    <style name="SmallBodySemibold">
+        <item name="android:textSize">@dimen/_10sdp</item>
+        <item name="android:fontFamily">@font/inter_semibold</item>
+    </style>
+
+    <style name="LabelLarge">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+    <style name="LabelMedium">
+        <item name="android:textSize">@dimen/_10sdp</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+    <style name="LabelSmall">
+        <item name="android:textSize">@dimen/_10sdp</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+
+
+
+
+</resources>

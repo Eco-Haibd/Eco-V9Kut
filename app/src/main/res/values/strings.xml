@@ -1,0 +1,19 @@
+<resources>
+
+    <string name="app_name">V9Kut</string>
+
+    <string name="manual_cut">Manual cut</string>
+    <string name="crop">Crop</string>
+    <string name="rotate">Rotate</string>
+    <string name="eraser">Eraser</string>
+    <string name="repair">Repair</string>
+    <string name="eraser_size">Eraser size</string>
+    <string name="brush_size">Brush size</string>
+    <string name="save">Save</string>
+
+    <string name="original">Original</string>
+    <string name="freestyle">Freestyle</string>
+    <string name="background">Background</string>
+    <string name="choose_background_from_your_device">Choose background from your device</string>
+
+</resources>
