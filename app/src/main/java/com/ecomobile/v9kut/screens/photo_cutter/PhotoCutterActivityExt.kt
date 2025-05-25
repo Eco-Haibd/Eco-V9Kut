@@ -52,11 +52,11 @@ fun PhotoCutterActivity.setupView() {
 
 fun PhotoCutterActivity.setupRecyclerViewFeature() {
     val items = listOf(
-        CutterFeature(CutterType.MANUAL_CUT, R.drawable.ic_manual_cut, getString(R.string.manual_cut)),
-        CutterFeature(CutterType.CROP, R.drawable.ic_crop, getString(R.string.crop)),
-        CutterFeature(CutterType.ROTATE, R.drawable.ic_rotate, getString(R.string.rotate)),
-        CutterFeature(CutterType.ERASER, R.drawable.ic_eraser, getString(R.string.eraser)),
-        CutterFeature(CutterType.REPAIR, R.drawable.ic_repair, getString(R.string.repair))
+        CutterType.MANUAL_CUT,
+        CutterType.CROP,
+        CutterType.ROTATE,
+        CutterType.ERASER,
+        CutterType.REPAIR
     )
     binding.rcvFeature.apply {
         addItemDecoration(
@@ -67,10 +67,10 @@ fun PhotoCutterActivity.setupRecyclerViewFeature() {
                 widthRatio = 0.28f
             )
         )
-        adapter = CutterFeatureAdapter(items).apply {
+        adapter = CutterFeatureAdapter(this@setupRecyclerViewFeature, items).apply {
             onItemClick = { feature ->
                 binding.apply {
-                    when(feature.type) {
+                    when(feature) {
                         CutterType.MANUAL_CUT -> binding.fcImage.setType(CutType.AREA)
                         CutterType.CROP -> {
                             if (!fcImage.isCenteringFullImage()) {

@@ -16,4 +16,9 @@
     <string name="background">Background</string>
     <string name="choose_background_from_your_device">Choose background from your device</string>
 
+    <string name="add_image">Add image</string>
+    <string name="replace">Replace</string>
+    <string name="add_sticker">Add sticker</string>
+    <string name="add_text">Add text</string>
+
 </resources>

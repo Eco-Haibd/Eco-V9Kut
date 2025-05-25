@@ -25,6 +25,10 @@ class BackgroundActivity: BaseActivity<ActivityBackgroundBinding>() {
         }
     }
 
+    val chooseImageLauncher = registerForActivityResult(StartActivityForResult()) { result ->
+        onHaveImage(result)
+    }
+
     override val layoutResId: Int
         get() = R.layout.activity_background
 

@@ -1,46 +1,50 @@
-package com.ecomobile.v9kut.screens.photo_cutter.adapter
+package com.ecomobile.v9kut.screens.editor.adapter
 
 import android.content.Context
 import androidx.core.content.ContextCompat
 import com.ecomobile.base.BaseAdapter
 import com.ecomobile.base.extension.click
 import com.ecomobile.v9kut.R
-import com.ecomobile.v9kut.databinding.ItemFeatureBinding
-import com.ecomobile.v9kut.screens.photo_cutter.model.CutterType
+import com.ecomobile.v9kut.databinding.ItemEditorFeatureBinding
+import com.ecomobile.v9kut.screens.editor.model.EditorType
 
-class CutterFeatureAdapter(
+class EditorFeatureAdapter(
     private val context: Context,
-    private val list: List<CutterType>
-): BaseAdapter<CutterType, ItemFeatureBinding>(list) {
+    private val list: List<EditorType>
+): BaseAdapter<EditorType, ItemEditorFeatureBinding>(list) {
 
     private var currentPosition = -1
-    private var mapOfTitle = mapOf<CutterType, String>()
-    private var mapOfIconRes = mapOf<CutterType, Int>()
-    var onItemClick : ((CutterType) -> Unit)? = null
+    private var mapOfTitle = mapOf<EditorType, String>()
+    private var mapOfIconRes = mapOf<EditorType, Int>()
+    var onItemClick : ((EditorType) -> Unit)? = null
 
     init {
-        mapOfTitle = mapOf(
-            CutterType.MANUAL_CUT to context.getString(R.string.manual_cut),
-            CutterType.CROP to context.getString(R.string.crop),
-            CutterType.ROTATE to context.getString(R.string.rotate),
-            CutterType.ERASER to context.getString(R.string.eraser),
-            CutterType.REPAIR to context.getString(R.string.repair)
-        )
-        mapOfIconRes = mapOf(
-            CutterType.MANUAL_CUT to R.drawable.ic_manual_cut,
-            CutterType.CROP to R.drawable.ic_crop,
-            CutterType.ROTATE to R.drawable.ic_rotate,
-            CutterType.ERASER to R.drawable.ic_eraser,
-            CutterType.REPAIR to R.drawable.ic_repair
-        )
         currentPosition = 0
+        initData()
     }
 
-    override fun getLayoutResId() = R.layout.item_feature
+    private fun initData() {
+        mapOfTitle = mapOf(
+            EditorType.IMAGE to context.getString(R.string.add_image),
+            EditorType.REPLACE to context.getString(R.string.replace),
+            EditorType.STICKER to context.getString(R.string.add_sticker),
+            EditorType.TEXT to context.getString(R.string.add_text),
+            EditorType.CROP to context.getString(R.string.crop)
+        )
+        mapOfIconRes = mapOf(
+            EditorType.IMAGE to R.drawable.ic_editor_type_image,
+            EditorType.REPLACE to R.drawable.ic_editor_type_replace,
+            EditorType.STICKER to R.drawable.ic_editor_type_sticker,
+            EditorType.TEXT to R.drawable.ic_editor_type_text,
+            EditorType.CROP to R.drawable.ic_editor_type_crop
+        )
+    }
 
-    override fun bind(binding: ItemFeatureBinding, item: CutterType, position: Int) {
+    override fun getLayoutResId() = R.layout.item_editor_feature
+
+    override fun bind(binding: ItemEditorFeatureBinding, item: EditorType, position: Int) {
         binding.apply {
-            imgIcon.setImageResource(mapOfIconRes[item] ?: R.drawable.ic_manual_cut)
+            imgIcon.setImageResource(mapOfIconRes[item] ?: R.drawable.ic_crop_type_original)
             tvTitle.text = mapOfTitle[item]
             if (currentPosition == position) {
                 card.setCardBackgroundColor(ContextCompat.getColor(root.context, R.color.cSecondary))
@@ -55,7 +59,11 @@ class CutterFeatureAdapter(
             }
             root.click {
                 val oldPosition = currentPosition
-                currentPosition = position
+                currentPosition = if (!arrayListOf(EditorType.REPLACE, EditorType.CROP).contains(item)) {
+                    position
+                } else {
+                    -1
+                }
                 notifyItemChanged(oldPosition, "payload")
                 notifyItemChanged(currentPosition, "payload")
                 onItemClick?.invoke(list[position])
@@ -63,7 +71,7 @@ class CutterFeatureAdapter(
         }
     }
 
-    override fun bind(binding: ItemFeatureBinding, item: CutterType, position: Int, payloads: MutableList<Any>) {
+    override fun bind(binding: ItemEditorFeatureBinding, item: EditorType, position: Int, payloads: MutableList<Any>) {
         if (payloads.isEmpty()) {
             super.bind(binding, item, position, payloads)
             return

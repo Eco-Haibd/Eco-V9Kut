@@ -41,6 +41,8 @@
         <activity android:name=".screens.background.BackgroundActivity"
             android:exported="false"/>
 
+        <activity android:name=".screens.editor.EditorActivity"
+            android:exported="false"/>
 
         <!--Provider-->
         <provider
