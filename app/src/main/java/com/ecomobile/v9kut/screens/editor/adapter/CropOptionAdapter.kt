@@ -1,4 +1,4 @@
-package com.ecomobile.v9kut.screens.crop.adapter
+package com.ecomobile.v9kut.screens.editor.adapter
 
 import android.content.Context
 import androidx.core.content.ContextCompat
@@ -6,7 +6,7 @@ import com.ecomobile.base.BaseAdapter
 import com.ecomobile.base.extension.click
 import com.ecomobile.v9kut.R
 import com.ecomobile.v9kut.databinding.ItemCropOptionBinding
-import com.ecomobile.v9kut.screens.crop.model.CropOption
+import com.ecomobile.v9kut.screens.editor.model.CropOption
 
 class CropOptionAdapter(
     private val context: Context,

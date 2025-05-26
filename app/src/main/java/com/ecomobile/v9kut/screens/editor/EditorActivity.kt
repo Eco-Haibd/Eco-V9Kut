@@ -5,8 +5,8 @@ import androidx.activity.result.contract.ActivityResultContracts.StartActivityFo
 import com.ecomobile.base.BaseActivity
 import com.ecomobile.v9kut.R
 import com.ecomobile.v9kut.databinding.ActivityEditorBinding
-import com.ecomobile.v9kut.screens.editor.adapter.EditorFeatureAdapter
-import com.ecomobile.v9kut.screens.editor.model.EditorType
+import com.ecomobile.v9kut.screens.editor.adapter.CropOptionAdapter
+import com.ecomobile.v9kut.screens.editor.adapter.TextOptionAdapter
 
 class EditorActivity: BaseActivity<ActivityEditorBinding>() {
 
@@ -14,17 +14,12 @@ class EditorActivity: BaseActivity<ActivityEditorBinding>() {
         const val IMAGE_PATH = "image_path"
     }
 
-    private val items = listOf(
-        EditorType.IMAGE,
-        EditorType.REPLACE,
-        EditorType.STICKER,
-        EditorType.TEXT,
-        EditorType.CROP
-    )
-
     val chooseImageLauncher = registerForActivityResult(StartActivityForResult()) { result ->
         replaceBackground(result)
     }
+
+    var textOptionAdapter: TextOptionAdapter? = null
+    var cropOptionAdapter: CropOptionAdapter? = null
 
     override val layoutResId: Int
         get() = R.layout.activity_editor
@@ -34,26 +29,15 @@ class EditorActivity: BaseActivity<ActivityEditorBinding>() {
     override fun onCreate() {
         super.onCreate()
         setupRecyclerViewFeature()
-        listener()
     }
 
     override fun onView() {
         super.onView()
         setupView()
+        listener()
     }
 
-    val editorFeatureAdapter = EditorFeatureAdapter(this, items).apply {
-        onItemClick = { feature ->
-            binding.apply {
-                when(feature) {
-                    EditorType.IMAGE -> {}
-                    EditorType.REPLACE -> openGallery()
-                    EditorType.STICKER -> {}
-                    EditorType.TEXT -> {
-                    }
-                    EditorType.CROP -> setShowCropView(true)
-                }
-            }
-        }
+    enum class ActionBottomType {
+        CROP, TEXT, STICKER
     }
 }

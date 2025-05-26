@@ -22,12 +22,11 @@ import com.ecomobile.photo_cutter.FreedomCutterCallbackImpl
 import com.ecomobile.photo_cutter.model.CutType
 import com.ecomobile.photo_cutter.model.FreedomCutterAnimationMode
 import com.ecomobile.v9kut.R
-import com.ecomobile.v9kut.screens.crop.CropHeaderView
-import com.ecomobile.v9kut.screens.crop.CropOptionView
-import com.ecomobile.v9kut.screens.crop.model.CropOption
+import com.ecomobile.v9kut.screens.editor.model.CropOption
 import com.ecomobile.v9kut.screens.cutter_success.CutterSuccessActivity
+import com.ecomobile.v9kut.screens.editor.adapter.CropOptionAdapter
+import com.ecomobile.v9kut.screens.editor.view.ActionHeaderView
 import com.ecomobile.v9kut.screens.photo_cutter.adapter.CutterFeatureAdapter
-import com.ecomobile.v9kut.screens.photo_cutter.model.CutterFeature
 import com.ecomobile.v9kut.screens.photo_cutter.model.CutterType
 import com.ecomobile.v9kut.singleton.FileUtils
 import kotlinx.coroutines.Dispatchers
@@ -46,6 +45,7 @@ fun PhotoCutterActivity.setupView() {
             binding.cropView.setImageBitmap(bm.copy(Bitmap.Config.ARGB_8888, true))
             bm.recycle()
         }
+        binding.cropActionHeader.setTitle(getString(R.string.crop))
     }
     setupRecyclerViewFeature()
 }
@@ -85,6 +85,26 @@ fun PhotoCutterActivity.setupRecyclerViewFeature() {
             }
         }
     }
+    binding.cropActionBottom.apply {
+        val listOption = listOf(
+            CropOption.Original,
+            CropOption.FreeStyle,
+            CropOption.RATIO_1_1,
+            CropOption.RATIO_4_5,
+            CropOption.RATIO_9_16,
+            CropOption.RATIO_9_20,
+            CropOption.RATIO_1_2,
+            CropOption.RATIO_2_3,
+            CropOption.RATIO_3_4,
+            CropOption.RATIO_16_9,
+            CropOption.RATIO_3_2,
+            CropOption.RATIO_4_3,
+            CropOption.RATIO_5_4
+        )
+        cropOptionAdapter = CropOptionAdapter(this@setupRecyclerViewFeature, listOption).apply {
+            setAdapter(this)
+        }
+    }
 }
 
 fun PhotoCutterActivity.setupListener() {
@@ -108,21 +128,19 @@ fun PhotoCutterActivity.setupListener() {
                 }
             }
         }
-        cropHeader.setCallback(object : CropHeaderView.Callback {
+        cropActionHeader.setCallback(object : ActionHeaderView.Callback {
             override fun onClose() {
                 setShowCropView(false)
                 fcImage.exitCenterFullImage()
             }
 
-            override fun onSave() {
+            override fun onDone() {
                 cropImage()
             }
         })
-        cropOption.setCallback(object : CropOptionView.Callback {
-            override fun onCropOptionClick(cropOption: CropOption) {
-                setCropOption(cropOption)
-            }
-        })
+        cropOptionAdapter?.onItemClick = { cropOption ->
+            setCropOption(cropOption)
+        }
         fcImage.setListener(object : FreedomCutterCallbackImpl {
             override fun onChangeType(type: CutType) {
                 when(type) {
@@ -190,15 +208,15 @@ fun PhotoCutterActivity.setupListener() {
 fun PhotoCutterActivity.setShowCropView(isShow: Boolean) {
     binding.apply {
         if (isShow) {
-            cropHeader.slideDown(true)
-            cropOption.slideUp(true)
+            cropActionHeader.slideDown(true)
+            cropActionBottom.slideUp(true)
             cropView.visible()
             headerBase.slideUp { headerBase.invisible() }
             fcImage.gone()
             rcvFeature.slideDown { rcvFeature.invisible() }
         } else {
-            cropHeader.slideUp { cropHeader.invisible() }
-            cropOption.slideDown { cropOption.invisible() }
+            cropActionHeader.slideUp { cropActionHeader.invisible() }
+            cropActionBottom.slideDown { cropActionBottom.invisible() }
             cropView.gone()
             headerBase.slideDown(true)
             fcImage.visible()

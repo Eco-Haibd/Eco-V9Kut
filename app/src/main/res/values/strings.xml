@@ -20,5 +20,10 @@
     <string name="replace">Replace</string>
     <string name="add_sticker">Add sticker</string>
     <string name="add_text">Add text</string>
+    <string name="color">Color</string>
+    <string name="font">Font</string>
+    <string name="bold">Bold</string>
+    <string name="italic">Italic</string>
+    <string name="underline">Underline</string>
 
 </resources>

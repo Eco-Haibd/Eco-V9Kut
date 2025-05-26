@@ -1,4 +1,4 @@
-package com.ecomobile.v9kut.screens.crop.model
+package com.ecomobile.v9kut.screens.editor.model
 
 enum class CropOption {
     Original,

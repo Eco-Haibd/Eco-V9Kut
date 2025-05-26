@@ -114,8 +114,8 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <com.ecomobile.v9kut.screens.crop.CropHeaderView
-                android:id="@+id/cropHeader"
+            <com.ecomobile.v9kut.screens.editor.view.ActionHeaderView
+                android:id="@+id/cropActionHeader"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_38sdp"
                 app:layout_constraintTop_toTopOf="parent"
@@ -141,13 +141,13 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <com.ecomobile.v9kut.screens.crop.CropOptionView
-                android:id="@+id/cropOption"
+            <com.ecomobile.v9kut.screens.editor.view.ActionBottomView
+                android:id="@+id/cropActionBottom"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:visibility="invisible"
                 app:layout_constraintTop_toTopOf="@id/rcvFeature"
-                app:layout_constraintBottom_toBottomOf="@id/rcvFeature"
-                android:visibility="invisible"/>
+                app:layout_constraintBottom_toBottomOf="@id/rcvFeature"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -6,17 +6,17 @@ import com.ecomobile.base.BaseAdapter
 import com.ecomobile.base.extension.click
 import com.ecomobile.v9kut.R
 import com.ecomobile.v9kut.databinding.ItemEditorFeatureBinding
-import com.ecomobile.v9kut.screens.editor.model.EditorType
+import com.ecomobile.v9kut.screens.editor.model.EditorOption
 
 class EditorFeatureAdapter(
     private val context: Context,
-    private val list: List<EditorType>
-): BaseAdapter<EditorType, ItemEditorFeatureBinding>(list) {
+    private val list: List<EditorOption>
+): BaseAdapter<EditorOption, ItemEditorFeatureBinding>(list) {
 
     private var currentPosition = -1
-    private var mapOfTitle = mapOf<EditorType, String>()
-    private var mapOfIconRes = mapOf<EditorType, Int>()
-    var onItemClick : ((EditorType) -> Unit)? = null
+    private var mapOfTitle = mapOf<EditorOption, String>()
+    private var mapOfIconRes = mapOf<EditorOption, Int>()
+    var onItemClick : ((EditorOption) -> Unit)? = null
 
     init {
         currentPosition = 0
@@ -25,24 +25,24 @@ class EditorFeatureAdapter(
 
     private fun initData() {
         mapOfTitle = mapOf(
-            EditorType.IMAGE to context.getString(R.string.add_image),
-            EditorType.REPLACE to context.getString(R.string.replace),
-            EditorType.STICKER to context.getString(R.string.add_sticker),
-            EditorType.TEXT to context.getString(R.string.add_text),
-            EditorType.CROP to context.getString(R.string.crop)
+            EditorOption.IMAGE to context.getString(R.string.add_image),
+            EditorOption.REPLACE to context.getString(R.string.replace),
+            EditorOption.STICKER to context.getString(R.string.add_sticker),
+            EditorOption.TEXT to context.getString(R.string.add_text),
+            EditorOption.CROP to context.getString(R.string.crop)
         )
         mapOfIconRes = mapOf(
-            EditorType.IMAGE to R.drawable.ic_editor_type_image,
-            EditorType.REPLACE to R.drawable.ic_editor_type_replace,
-            EditorType.STICKER to R.drawable.ic_editor_type_sticker,
-            EditorType.TEXT to R.drawable.ic_editor_type_text,
-            EditorType.CROP to R.drawable.ic_editor_type_crop
+            EditorOption.IMAGE to R.drawable.ic_editor_type_image,
+            EditorOption.REPLACE to R.drawable.ic_editor_type_replace,
+            EditorOption.STICKER to R.drawable.ic_editor_type_sticker,
+            EditorOption.TEXT to R.drawable.ic_editor_type_text,
+            EditorOption.CROP to R.drawable.ic_editor_type_crop
         )
     }
 
     override fun getLayoutResId() = R.layout.item_editor_feature
 
-    override fun bind(binding: ItemEditorFeatureBinding, item: EditorType, position: Int) {
+    override fun bind(binding: ItemEditorFeatureBinding, item: EditorOption, position: Int) {
         binding.apply {
             imgIcon.setImageResource(mapOfIconRes[item] ?: R.drawable.ic_crop_type_original)
             tvTitle.text = mapOfTitle[item]
@@ -59,7 +59,7 @@ class EditorFeatureAdapter(
             }
             root.click {
                 val oldPosition = currentPosition
-                currentPosition = if (!arrayListOf(EditorType.REPLACE, EditorType.CROP).contains(item)) {
+                currentPosition = if (!arrayListOf(EditorOption.REPLACE, EditorOption.CROP).contains(item)) {
                     position
                 } else {
                     -1
@@ -71,7 +71,7 @@ class EditorFeatureAdapter(
         }
     }
 
-    override fun bind(binding: ItemEditorFeatureBinding, item: EditorType, position: Int, payloads: MutableList<Any>) {
+    override fun bind(binding: ItemEditorFeatureBinding, item: EditorOption, position: Int, payloads: MutableList<Any>) {
         if (payloads.isEmpty()) {
             super.bind(binding, item, position, payloads)
             return

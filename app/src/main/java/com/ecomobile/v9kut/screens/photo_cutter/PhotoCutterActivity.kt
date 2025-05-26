@@ -4,6 +4,7 @@ import android.view.View
 import com.ecomobile.base.BaseActivity
 import com.ecomobile.v9kut.R
 import com.ecomobile.v9kut.databinding.ActivityPhotoCutterBinding
+import com.ecomobile.v9kut.screens.editor.adapter.CropOptionAdapter
 
 class PhotoCutterActivity: BaseActivity<ActivityPhotoCutterBinding>() {
 
@@ -14,6 +15,8 @@ class PhotoCutterActivity: BaseActivity<ActivityPhotoCutterBinding>() {
     var imageWidth = 0
     var imageHeight = 0
 
+    var cropOptionAdapter: CropOptionAdapter? = null
+
     override val layoutResId: Int
         get() = R.layout.activity_photo_cutter
 
@@ -21,11 +24,11 @@ class PhotoCutterActivity: BaseActivity<ActivityPhotoCutterBinding>() {
 
     override fun onCreate() {
         super.onCreate()
-        setupListener()
     }
 
     override fun onView() {
         super.onView()
         setupView()
+        setupListener()
     }
 }
