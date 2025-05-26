@@ -25,5 +25,6 @@
     <string name="bold">Bold</string>
     <string name="italic">Italic</string>
     <string name="underline">Underline</string>
+    <string name="enter_your_text">Enter your text...</string>
 
 </resources>

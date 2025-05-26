@@ -24,6 +24,7 @@ fun BaseActivity<*>.consumeSystemBars(
             binding.root.setPadding(0, statusBarHeight, 0, bottomBarHeight)
         }
         callback?.invoke(statusBarHeight, bottomBarHeight)
+        insetsLiveData.postValue(insets)
         WindowInsetsCompat.CONSUMED
     }
 }

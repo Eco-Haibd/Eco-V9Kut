@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.MutableLiveData
 import com.ecomobile.base.databinding.LayoutLoadingBinding
 import com.ecomobile.base.extension.consumeSystemBars
 import com.ecomobile.base.extension.contextAwareActivityScope
@@ -40,6 +41,8 @@ abstract class BaseActivity<B : ViewDataBinding>: AppCompatActivity(), AndroidSc
     open fun isLockPortraitScreen() = true
 
     open fun getTopView(): View = binding.root
+
+    val insetsLiveData = MutableLiveData<WindowInsetsCompat>()
 
     var inForeground = false
 

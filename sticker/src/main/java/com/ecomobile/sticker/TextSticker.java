@@ -88,7 +88,6 @@ public class TextSticker extends Sticker {
   }
 
   @Override public void draw(@NonNull Canvas canvas) {
-    Log.e("HAI", "draw: ");
     Matrix matrix = getMatrix();
     canvas.save();
     canvas.concat(matrix);
@@ -165,6 +164,9 @@ public class TextSticker extends Sticker {
     return this;
   }
 
+  public int getTextColor() {
+    return textPaint.getColor();
+  }
   @NonNull public TextSticker setTextAlign(@NonNull Layout.Alignment alignment) {
     this.alignment = alignment;
     return this;

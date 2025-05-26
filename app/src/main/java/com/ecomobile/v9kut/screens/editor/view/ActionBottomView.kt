@@ -18,18 +18,27 @@ class ActionBottomView(
 
     private var adapter: BaseAdapter<*, *>? = null
 
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
+        adapter?.let {
+            setAdapter(it)
+        }
+    }
+
     fun setAdapter(adapter: BaseAdapter<*, *>) {
-        this.adapter = adapter
-        binding.rvOption.apply {
-            addItemDecoration(
-                PercentWidthItemDecoration(
-                    context = context,
-                    0,
-                    resources.getDimension(com.intuit.sdp.R.dimen._8sdp).roundToInt(),
-                    widthRatio = 0.2f
-                )
-            )
+        post {
             this.adapter = adapter
+            binding.rvOption.apply {
+                addItemDecoration(
+                    PercentWidthItemDecoration(
+                        context = context,
+                        0,
+                        resources.getDimension(com.intuit.sdp.R.dimen._8sdp).roundToInt(),
+                        widthRatio = 0.2f
+                    )
+                )
+                this.adapter = adapter
+            }
         }
     }
 }

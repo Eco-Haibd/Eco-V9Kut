@@ -121,7 +121,7 @@ public class StickerView extends FrameLayout {
           a.getBoolean(R.styleable.StickerView_bringToFrontCurrentSticker, false);
 
       borderPaint.setAntiAlias(true);
-      borderPaint.setColor(a.getColor(R.styleable.StickerView_borderColor, Color.BLACK));
+      borderPaint.setColor(a.getColor(R.styleable.StickerView_borderColor, Color.WHITE));
       borderPaint.setAlpha(a.getInteger(R.styleable.StickerView_borderAlpha, 128));
 
       configDefaultIcons();
@@ -134,11 +134,11 @@ public class StickerView extends FrameLayout {
 
   public void configDefaultIcons() {
     BitmapStickerIcon deleteIcon = new BitmapStickerIcon(
-        ContextCompat.getDrawable(getContext(), R.drawable.sticker_ic_close_white_18dp),
+        ContextCompat.getDrawable(getContext(), R.drawable.ic_close),
         BitmapStickerIcon.LEFT_TOP);
     deleteIcon.setIconEvent(new DeleteIconEvent());
     BitmapStickerIcon zoomIcon = new BitmapStickerIcon(
-        ContextCompat.getDrawable(getContext(), R.drawable.sticker_ic_scale_white_18dp),
+        ContextCompat.getDrawable(getContext(), R.drawable.ic_scale),
         BitmapStickerIcon.RIGHT_BOTOM);
     zoomIcon.setIconEvent(new ZoomIconEvent());
     BitmapStickerIcon flipIcon = new BitmapStickerIcon(

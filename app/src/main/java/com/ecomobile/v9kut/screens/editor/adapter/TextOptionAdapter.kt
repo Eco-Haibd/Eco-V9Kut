@@ -16,11 +16,23 @@ class TextOptionAdapter(
     private var currentPosition = -1
     private var mapOfTitle = mapOf<TextEditorOption, String>()
     private var mapOfIconRes = mapOf<TextEditorOption, Int>()
-    var onItemClick : ((TextEditorOption) -> Unit)? = null
+    var onItemClick : ((TextEditorOption?) -> Unit)? = null
 
     init {
         currentPosition = 0
         initData()
+    }
+
+    fun setPosition(position: Int) {
+        val oldPosition = currentPosition
+        currentPosition = position
+        notifyItemChanged(currentPosition, "payload")
+        if (oldPosition != -1) notifyItemChanged(oldPosition, "payload")
+        if (position != -1) {
+            onItemClick?.invoke(list[position])
+        } else {
+            onItemClick?.invoke(null)
+        }
     }
 
     private fun initData() {
@@ -60,11 +72,6 @@ class TextOptionAdapter(
             root.click {
                 val oldPosition = currentPosition
                 currentPosition = position
-//                currentPosition = if (!arrayListOf(EditorType.REPLACE, EditorType.CROP).contains(item)) {
-//                    position
-//                } else {
-//                    -1
-//                }
                 notifyItemChanged(oldPosition, "payload")
                 notifyItemChanged(currentPosition, "payload")
                 onItemClick?.invoke(list[position])
