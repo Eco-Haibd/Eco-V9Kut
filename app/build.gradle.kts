@@ -80,5 +80,6 @@ dependencies {
     implementation(project(":firebase"))
     implementation(project(":photo-cutter"))
     implementation(project(":cropper"))
+    implementation(project(":sticker"))
 
 }
